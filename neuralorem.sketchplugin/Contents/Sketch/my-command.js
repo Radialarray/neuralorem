@@ -876,17 +876,17 @@ module.exports = fetch
 /*!***************************!*\
   !*** ./src/my-command.js ***!
   \***************************/
-/*! exports provided: windowAlert */
+/*! exports provided: createText */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(fetch) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "windowAlert", function() { return windowAlert; });
+/* WEBPACK VAR INJECTION */(function(fetch) {/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createText", function() { return createText; });
 /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
 /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
 
 var inputData;
-function windowAlert(context) {
+function createText(context) {
   var document = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.fromNative(context.document);
   var selection = context.selection;
   var notAText = 0;
@@ -963,7 +963,7 @@ module.exports = require("sketch");
     exports[key](context);
   }
 }
-that['windowAlert'] = __skpm_run.bind(this, 'windowAlert');
+that['createText'] = __skpm_run.bind(this, 'createText');
 that['onRun'] = __skpm_run.bind(this, 'default')
 
 //# sourceMappingURL=my-command.js.map

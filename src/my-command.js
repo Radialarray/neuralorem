@@ -1,7 +1,7 @@
 import sketch from 'sketch'
 var inputData;
 
-export function windowAlert(context) {
+export function createText(context) {
   const document = sketch.fromNative(context.document)
 
   var selection = context.selection;

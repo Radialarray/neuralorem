@@ -7,15 +7,15 @@
   "commands": [
     {
       "script": "my-command.js",
-      "handler": "windowAlert",
+      "handler": "createText",
       "name": "Create Neural Lorem Ipsum",
-      "identifier": "windowAlert"
+      "identifier": "createText"
     }
   ],
   "menu": {
     "title": "Neuralorem",
     "items": [
-      "windowAlert"
+      "createText"
     ]
   },
   "version": "0.1.0",
