@@ -6,11 +6,6 @@ let {
 const server = http.createServer().listen(3000);
 console.log("Server running");
 
-// default python shell options
-PythonShell.defaultOptions = {
-	scriptPath: 'textgenrnn-master'
-};
-
 server.on('request', function (req, res) {
 	if (req.method == 'GET') { //PUT Only
 
