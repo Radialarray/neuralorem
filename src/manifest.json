@@ -1,0 +1,19 @@
+{
+  "name": "NeuraLorem",
+  "description": "This is a LoremIpsum generator which creates a random text from a trained neural network based on the input seed word.",
+  "author": "Sven Loechner",
+  "compatibleVersion": "52.0",
+  "bundleVersion": 1,
+  "commands": [{
+    "script": "./my-command.js",
+    "handler": "windowAlert",
+    "name": "Create Neural Lorem Ipsum",
+    "identifier": "windowAlert"
+  }],
+  "menu": {
+    "title": "Neuralorem",
+    "items": [
+      "windowAlert"
+    ]
+  }
+}
