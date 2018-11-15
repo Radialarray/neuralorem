@@ -1,0 +1,8 @@
+{
+    "name": "neuralorem-server",
+    "version": "0.1.0",
+    "dependencies": {
+        "python-shell": "1.0.6"
+    },
+    "author": "sven <sven.loechner@gmx.de>"
+}
