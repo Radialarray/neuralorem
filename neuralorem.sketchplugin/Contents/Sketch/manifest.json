@@ -1,6 +1,6 @@
 {
   "name": "NeuraLorem",
-  "description": "This is a LoremIpsum generator which creates a random text from a trained neural network based on the input seed word.",
+  "description": "This is a LoremIpsum generator which creates a random text from a trained neural network based on the input seeds.",
   "author": "Sven Loechner",
   "compatibleVersion": "52.0",
   "bundleVersion": 1,

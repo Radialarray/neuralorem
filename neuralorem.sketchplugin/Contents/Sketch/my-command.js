@@ -885,41 +885,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sketch */ "sketch");
 /* harmony import */ var sketch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sketch__WEBPACK_IMPORTED_MODULE_0__);
 
-var userInput;
+var inputData;
 function windowAlert(context) {
   var document = sketch__WEBPACK_IMPORTED_MODULE_0___default.a.fromNative(context.document);
   var selection = context.selection;
   var notAText = 0;
 
-  if (selection.count() === 0 || selection.count() === null) {
-    sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Select something!");
-  } else {
-    document.selectedLayers.forEach(function (layer) {
-      if (layer.type === String(sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Types.Text)) {} else {
-        // Increase if not a textfield
-        notAText++;
-        sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Select a text field!");
-      }
-    }); // Check if everything selected are textfields
+  if (selection !== null) {
+    if (selection.count() === 0) {
+      sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Select something! 😑");
+    } else {
+      document.selectedLayers.forEach(function (layer) {
+        if (layer.type === String(sketch__WEBPACK_IMPORTED_MODULE_0___default.a.Types.Text)) {
+          log(layer.text);
+          inputData = layer.text; // inputData = inputData.split(' ');
 
-    if (notAText === 0) {
-      // Create the LSTM Generator passing it the model directory
-      // lstm = ml5.LSTMGenerator('models/woolf/', modelReady);
-      var window = createWindow(context);
-      var alert = window[0];
-      var response = alert.runModal(); // This part shows the dialog windows and stores the 'response' in a variable
-      // sketch.UI.message(response)
-      // log(response)
-      // sketch.UI.message("Window Created 🙌")
+          inputData = encodeURI(inputData);
+        } else {
+          // Increase if not a textfield
+          notAText++;
+          sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Select a text field! 🙄");
+        }
+      }); // Check if everything selected are textfields
 
-      if (response == "1000") {
-        // This code only runs when the user clicks 'Ok';
-        var inputData = userInput.stringValue();
-        log(inputData);
+      if (notAText === 0) {
+        sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Sending data to neural network 😎");
         fetch('http://localhost:3000/?seed=' + inputData).then(function (res) {
           return res.json();
         }).then(function (data) {
           // log(data);
+          sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Replacing text");
           exchangeText(document, data);
         }).catch(function (err) {
           return log(err);
@@ -934,37 +929,6 @@ function exchangeText(document, data) {
     layer.text = data;
   });
   sketch__WEBPACK_IMPORTED_MODULE_0___default.a.UI.message("Text replaced 🙌");
-}
-
-function createWindow() {
-  var alert = COSAlertWindow.new();
-  alert.setMessageText("Type in your seed word.");
-  alert.addButtonWithTitle("Ok");
-  alert.addButtonWithTitle("Cancel"); // Create the main view
-
-  var viewWidth = 400;
-  var viewHeight = 100;
-  var viewSpacer = 10;
-  var view = NSView.alloc().initWithFrame(NSMakeRect(0, 0, viewWidth, viewHeight));
-  alert.addAccessoryView(view); // Create labels
-
-  var infoLabel = NSTextField.alloc().initWithFrame(NSMakeRect(0, viewHeight - 33, viewWidth - 100, 35)); // Configure labels
-
-  infoLabel.setStringValue("Type in a seed word and then the textgenerator creates output based on your seed.");
-  infoLabel.setSelectable(false);
-  infoLabel.setEditable(false);
-  infoLabel.setBezeled(false);
-  infoLabel.setDrawsBackground(false); // Add labels
-
-  view.addSubview(infoLabel); // Creating the inputs
-
-  userInput = NSTextField.alloc().initWithFrame(NSMakeRect(0, viewHeight - 85, 130, 20)); // Adding the textfield
-
-  view.addSubview(userInput); // Default values for textfield
-
-  userInput.setStringValue('Input seed word'); // Show the dialog
-
-  return [alert];
 }
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/sketch-polyfill-fetch/lib/index.js */ "./node_modules/sketch-polyfill-fetch/lib/index.js")))
 
