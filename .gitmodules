@@ -1,6 +1,3 @@
 [submodule "sketchplugin"]
 	path = sketchplugin
 	url = /Users/svenloechner/Desktop/HfG/Semester_6/Laborwoche/textgenrnn/neuralorem
-[submodule "node-server/textgenrnn"]
-	path = node-server/textgenrnn
-	url = https://github.com/minimaxir/textgenrnn.git
